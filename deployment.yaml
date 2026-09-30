@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: deployment
+  namespace: webcalculator
+  labels:
+    app: webcalculator
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: webcalculator
+  template:
+    metadata:
+      labels:
+        app: webcalculator
+    spec:
+      containers:
+      - name: webcalculator
+        image: web-calculator:latest
+        ports:
+          - containerPort: 8080
